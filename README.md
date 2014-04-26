@@ -11,8 +11,8 @@ npm install
 2. To download bower_components
 bower install
 
-3. To run the example (recipes), a server starts in port 8000
+3. To run the example (F1 2014), a server starts in port 8000
 npm start
 
 4. Go to your favourite browser (TODO):
-http://localhost:8000/recipes
+http://localhost:8000/f1

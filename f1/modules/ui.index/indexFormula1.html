@@ -1,0 +1,18 @@
+<p>Welcome to F1 2014</p>
+<hr />
+<div class="listRace">
+	<table>
+		<tr>
+			<th>Round</th>
+			<th>Date</th>
+			<th>Race Name</th>
+			<th>Circuit Name</th>
+		</tr>
+		<tr ng-repeat="race in raceList">
+			<td>{{race.round}}</td>
+			<td>{{race.date}} / {{race.time}}</td>
+			<td>{{race.raceName}}</td>
+			<td>{{race.Circuit.circuitName}}</td>
+		</tr>
+	</table>
+</div>
