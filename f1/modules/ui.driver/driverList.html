@@ -1,0 +1,26 @@
+<p>Select a year to show the driverList</p>
+<select ng-model="year" ng-options="y.name for y in years">
+	<option value="">-- choose year --</option>
+</select>
+<button ng-click="showDrivers(year);">Show Drivers</button>
+<hr />
+<div class="loading" ng-show="isLoadingData">
+	<p>Cargando datos...</p>
+</div>
+<div class="listDrivers">
+	<h2>Year selected: {{evaluatedYear.name}}</h2>
+	<table>
+		<tr>
+			<th>Driver Name</th>
+			<th>Nationality</th>
+			<th>Year</th>
+			<th>Information</th>
+		</tr>
+		<tr ng-repeat="driver in driverList">
+			<td><a href="#/driver/{{driver.driverId}}">{{driver.givenName}} {{driver.familyName}}</a></td>
+			<td>{{driver.nationality}}</td>
+			<td>{{driver.dateOfBirth | date: 'dd/MM/yyyy'}}</td>
+			<td><a href="{{driver.url}}">Wiki info of {{driver.code}}</a></td>
+		</tr>
+	</table>
+</div>

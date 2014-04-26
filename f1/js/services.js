@@ -32,4 +32,18 @@ angular.module('f1App.services', [])
 	};
 
 	return raceAPI;
+})
+
+.factory('DriverService', function ($http, ConfigService) {
+	var driverAPI = {};
+
+	driverAPI.getDriverList = function (year) {
+		return $http({
+			method: 'GET',
+			url: ConfigService.getUrlApp() + "/" + year.name + '/drivers.json'
+		});
+	};
+	
+	return driverAPI;
 });
+

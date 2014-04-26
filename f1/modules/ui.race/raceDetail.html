@@ -18,7 +18,7 @@
 			<th>Avg. Speed</th>
 		</tr>
 		<tr ng-repeat="item in raceDetail.Results">
-			<td>{{item.position}}</td>
+			<td>{{item.positionText}}</td>
 			<td>{{item.points}}</td>
 			<td><a href="{{item.Driver.url}}">{{item.Driver.givenName}} {{item.Driver.familyName}}</a></td>
 			<td><a href="{{item.Constructor.url}}">{{item.Constructor.name}}</a></td>
