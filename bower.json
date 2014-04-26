@@ -1,0 +1,12 @@
+{
+  "name": "angularjs_docs",
+  "description": "Project Collection Examples with Angularjs & bower",
+  "version": "0.0.0",
+  "homepage": "http://www.informatico.hol.es",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x"
+  }
+}
