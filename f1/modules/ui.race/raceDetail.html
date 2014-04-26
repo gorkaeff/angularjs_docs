@@ -1,8 +1,10 @@
-<p>Race Name: {{raceDetail.raceName}}, {{raceDetail.Circuit.circuitName}}</p>
-<p>Race: {{numRace}} of {{totalRacesYear}}</p>
-<p>Date: {{raceDetail.date | date: 'dd/MM/yyyy'}}</p>
-<p>Hour: {{raceDetail.time.substring(0,5)}}</p>
-<div>
+<div ng-show="isRaceExists">
+	<p>Race Name: {{raceDetail.raceName}}, {{raceDetail.Circuit.circuitName}}</p>
+	<p>Race: {{numRace}} of {{totalRacesYear}}</p>
+	<p>Date: {{raceDetail.date | date: 'dd/MM/yyyy'}}</p>
+	<p>Hour: {{raceDetail.time.substring(0,5)}}</p>
+</div>
+<div ng-show="isRaceExists">
 	<table>
 		<tr>
 			<th>Pos</th>
@@ -23,8 +25,14 @@
 			<td>{{item.laps}}</td>
 			<td>{{item.Time.time}}</td>
 			<td>{{item.status}}</td>
-			<td>Pos {{item.FastestLap.rank}} on lap {{item.FastestLap.lap}} with {{item.FastestLap.Time.time}}</td>
+			<td>
+				Pos {{item.FastestLap.rank}} on lap {{item.FastestLap.lap}} with {{item.FastestLap.Time.time}}
+			</td>
 			<td>{{item.FastestLap.AverageSpeed.speed}}</td>
 		</tr>
 	</table>
+</div>
+
+<div ng-show="!isRaceExists">
+	<h3>Race information is not available yet. Sorry</h3>
 </div>
