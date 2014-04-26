@@ -10,7 +10,7 @@ angular.module('f1App.services', [])
 	seasonAPI.getRaceList = function (year) {
 		return $http({
 			method: 'GET',
-			url: 'http://ergast.com/api/f1/' + year + '.json'
+			url: 'http://ergast.com/api/f1/' + year.name + '.json'
 		});
 	}
 

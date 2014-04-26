@@ -28,3 +28,8 @@
   content: "";
   padding: 0;
 }
+
+.loading p{
+	font-size: 3em;
+	color: #a2a2a2;
+}
