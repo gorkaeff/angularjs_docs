@@ -3,8 +3,12 @@
 /* Controllers */
 
 angular.module('f1App.controllers', [])
-	
-	.controller('IndexCtrl', function ($scope, SeasonService, $log) {
+	//----------------------------------------------------------------------------------------
+	.controller('IndexCtrl', function ($scope) {
+		$scope.welcome = "Welcome to the F1 Ergast API with AngularJS & Bower";
+	})
+	//----------------------------------------------------------------------------------------
+	.controller('RaceCtrl', function ($scope, RaceService) {
 		//create variables for 
 		var firstYearAPI = 1950;
 		var actualYearAPI = new Date().getFullYear();
@@ -19,11 +23,20 @@ angular.module('f1App.controllers', [])
 		
 		$scope.showRace = function (year) {
 			$scope.isLoadingData = true;
-			SeasonService.getRaceList(year).success(function (response) {
+			RaceService.getRaceList(year).success(function (response) {
 				$scope.raceList = response.MRData.RaceTable.Races;
 				$scope.isLoadingData = false;
 			});	
 		};
 		
 		$scope.showRace({name: actualYearAPI});
+	})
+	//----------------------------------------------------------------------------------------
+	.controller('RaceDetailCtrl', function ($log, $scope, $routeParams, RaceService) {
+		$scope.numRace = $routeParams.id;
+		$scope.numYear = $routeParams.year;
+		RaceService.getRaceDetail($scope.numRace, $scope.numYear).success(function (response) {
+			$scope.totalRacesYear = response.MRData.total;
+			$scope.raceDetail = response.MRData.RaceTable.Races[0];
+		});
 	});

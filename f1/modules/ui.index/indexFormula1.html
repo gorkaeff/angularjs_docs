@@ -1,25 +1,2 @@
-<p>Select a year to show it the raceList</p>
-<select ng-model="year" ng-options="y.name for y in years">
-	<option value="">-- choose year --</option>
-</select>
-<button ng-click="showRace(year);">Show Race</button>
-<hr />
-<div class="loading" ng-show="isLoadingData">
-	<p>Cargando datos...</p>
-</div>
-<div class="listRace">
-	<table>
-		<tr>
-			<th>Round</th>
-			<th>Date & GMT</th>
-			<th>Race Name</th>
-			<th>Circuit Name</th>
-		</tr>
-		<tr ng-repeat="race in raceList">
-			<td>{{race.round}}</td>
-			<td>{{race.date | date: 'dd/MM/yyyy'}} {{race.time.substring(0,5)}}</td>
-			<td><a href="{{race.url}}">{{race.raceName}}</a></td>
-			<td><a href="{{race.Circuit.url}}">{{race.Circuit.circuitName}}</a></td>
-		</tr>
-	</table>
-</div>
+<h1>F1 2014</h1>
+<p>{{welcome}}</p>

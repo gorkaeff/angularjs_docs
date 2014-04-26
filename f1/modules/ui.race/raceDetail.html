@@ -1,0 +1,30 @@
+<p>Race Name: {{raceDetail.raceName}}, {{raceDetail.Circuit.circuitName}}</p>
+<p>Race: {{numRace}} of {{totalRacesYear}}</p>
+<p>Date: {{raceDetail.date | date: 'dd/MM/yyyy'}}</p>
+<p>Hour: {{raceDetail.time.substring(0,5)}}</p>
+<div>
+	<table>
+		<tr>
+			<th>Pos</th>
+			<th>Points</th>
+			<th>Driver</th>
+			<th>Constructor</th>
+			<th>Laps</th>
+			<th>Time</th>
+			<th>Status</th>
+			<th>Fastest Lap</th>
+			<th>Avg. Speed</th>
+		</tr>
+		<tr ng-repeat="item in raceDetail.Results">
+			<td>{{item.position}}</td>
+			<td>{{item.points}}</td>
+			<td><a href="{{item.Driver.url}}">{{item.Driver.givenName}} {{item.Driver.familyName}}</a></td>
+			<td><a href="{{item.Constructor.url}}">{{item.Constructor.name}}</a></td>
+			<td>{{item.laps}}</td>
+			<td>{{item.Time.time}}</td>
+			<td>{{item.status}}</td>
+			<td>Pos {{item.FastestLap.rank}} on lap {{item.FastestLap.lap}} with {{item.FastestLap.Time.time}}</td>
+			<td>{{item.FastestLap.AverageSpeed.speed}}</td>
+		</tr>
+	</table>
+</div>
