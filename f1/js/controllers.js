@@ -34,14 +34,26 @@ angular.module('f1App.controllers', [])
 	//----------------------------------------------------------------------------------------
 	.controller('RaceDetailCtrl', function ($scope, $routeParams, RaceService) {
 		$scope.isRaceExists = false;
+		$scope.isRace = true;
+		$scope.isQualifying = false;
+		$scope.isPitstop = false;
 		$scope.numRace = $routeParams.id;
 		$scope.numYear = $routeParams.year;
+		
 		RaceService.getRaceDetail($scope.numRace, $scope.numYear).success(function (response) {
 			$scope.totalRacesYear = response.MRData.total;
 			$scope.raceDetail = response.MRData.RaceTable.Races[0];
 			if ($scope.raceDetail.season != ""){
 				$scope.isRaceExists = true;
 			}
+		});
+		
+		RaceService.getQualifyingDetail($scope.numRace, $scope.numYear).success(function (response){
+			$scope.qualifying = response.MRData.RaceTable.Races[0];
+		});
+		
+		RaceService.getPitsStop($scope.numRace, $scope.numYear).success(function (response){
+			$scope.pitStops = response.MRData.RaceTable.Races[0];
 		});
 	})
 	//----------------------------------------------------------------------------------------

@@ -30,6 +30,20 @@ angular.module('f1App.services', [])
 			url: ConfigService.getUrlApp() + "/" + yearRace + '/' + idRace + '/results.json'
 		});
 	};
+	
+	raceAPI.getQualifyingDetail = function (idRace, yearRace) {
+		return $http({
+			method: 'GET',
+			url: ConfigService.getUrlApp() + "/" + yearRace + '/' + idRace + '/qualifying.json'
+		});
+	};
+	
+	raceAPI.getPitsStop = function (idRace, yearRace) {
+		return $http({
+			method: 'GET',
+			url: ConfigService.getUrlApp() + "/" + yearRace + '/' + idRace + '/pitstops.json'
+		});
+	};
 
 	return raceAPI;
 })

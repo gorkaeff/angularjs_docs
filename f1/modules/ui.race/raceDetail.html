@@ -5,32 +5,80 @@
 	<p>Hour: {{raceDetail.time.substring(0,5)}}</p>
 </div>
 <div ng-show="isRaceExists">
-	<table>
-		<tr>
-			<th>Pos</th>
-			<th>Points</th>
-			<th>Driver</th>
-			<th>Constructor</th>
-			<th>Laps</th>
-			<th>Time</th>
-			<th>Status</th>
-			<th>Fastest Lap</th>
-			<th>Avg. Speed</th>
-		</tr>
-		<tr ng-repeat="item in raceDetail.Results">
-			<td>{{item.positionText}}</td>
-			<td>{{item.points}}</td>
-			<td><a href="{{item.Driver.url}}">{{item.Driver.givenName}} {{item.Driver.familyName}}</a></td>
-			<td><a href="{{item.Constructor.url}}">{{item.Constructor.name}}</a></td>
-			<td>{{item.laps}}</td>
-			<td>{{item.Time.time}}</td>
-			<td>{{item.status}}</td>
-			<td>
-				Pos {{item.FastestLap.rank}} on lap {{item.FastestLap.lap}} with {{item.FastestLap.Time.time}}
-			</td>
-			<td>{{item.FastestLap.AverageSpeed.speed}}</td>
-		</tr>
-	</table>
+	<a href="" ng-click="isRace=true;isQualifying=false;isPitstop=false">Race</a> &
+	<a href="" ng-click="isRace=false;isQualifying=false;isPitstop=true">PitStops</a> &
+	<a href="" ng-click="isRace=false;isQualifying=true;isPitstop=false">Qualifying</a>
+	
+	<div ng-show="isRace">
+		<table>
+			<tr>
+				<th>Pos</th>
+				<th>Points</th>
+				<th>Driver</th>
+				<th>Constructor</th>
+				<th>Laps</th>
+				<th>Time</th>
+				<th>Status</th>
+				<th>Fastest Lap</th>
+				<th>Avg. Speed</th>
+			</tr>
+			<tr ng-repeat="item in raceDetail.Results">
+				<td>{{item.positionText}}</td>
+				<td>{{item.points}}</td>
+				<td><a href="{{item.Driver.url}}">{{item.Driver.givenName}} {{item.Driver.familyName}}</a></td>
+				<td><a href="{{item.Constructor.url}}">{{item.Constructor.name}}</a></td>
+				<td>{{item.laps}}</td>
+				<td>{{item.Time.time}}</td>
+				<td>{{item.status}}</td>
+				<td>
+					Pos {{item.FastestLap.rank}} on lap {{item.FastestLap.lap}} with {{item.FastestLap.Time.time}}
+				</td>
+				<td>{{item.FastestLap.AverageSpeed.speed}}</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div ng-show="isQualifying">
+		<table>
+			<tr>
+				<th>Pos</th>
+				<th>Driver</th>
+				<th>Constructor</th>
+				<th>Q1</th>
+				<th>Q2</th>
+				<th>Q3</th>
+			</tr>
+			<tr ng-repeat="qua in qualifying.QualifyingResults">
+				<td>{{qua.position}}</td>
+				<td>{{qua.Driver.givenName}} {{qua.Driver.familyName}}</td>
+				<td>{{qua.Constructor.name}}</td>
+				<td>{{qua.Q1}}</td>
+				<td>{{qua.Q2}}</td>
+				<td>{{qua.Q3}}</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div ng-show="isPitstop">
+		<table>
+			<tr>
+				<th>Driver</th>
+				<th>Stop</th>
+				<th>Lap</th>
+				<th>Time</th>
+				<th>Duration</th>
+			</tr>
+			<tr ng-repeat="ps in pitStops.PitStops">
+				<td>{{ps.driverId}}</td>
+				<td>{{ps.lap}}</td>
+				<td>{{ps.stop}}</td>
+				<td>{{ps.time}}</td>
+				<td>{{ps.duration}}</td>
+			</tr>
+		</table>
+	</div>
+	
+	
 </div>
 
 <div ng-show="!isRaceExists">
