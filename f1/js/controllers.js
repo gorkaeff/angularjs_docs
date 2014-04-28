@@ -21,6 +21,7 @@ angular.module('f1App.controllers', [])
 		}
 		
 		$scope.showRace = function (year) {
+			$scope.evaluatedYear = year;
 			$scope.isLoadingData = true;
 			RaceService.getRaceList(year).success(function (response) {
 				$scope.raceList = response.MRData.RaceTable.Races;
@@ -81,6 +82,7 @@ angular.module('f1App.controllers', [])
 		}
 		
 		$scope.showDrivers = function (year) {
+			$scope.evaluatedYear = year;
 			$scope.isLoadingData = true;
 			DriverService.getDriverList(year).success(function (response) {
 				$scope.driverList = response.MRData.DriverTable.Drivers;
