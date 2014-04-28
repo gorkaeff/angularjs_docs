@@ -17,7 +17,7 @@
 		<li><a href="" ng-click="isRace=false;isQualifying=false;isPitstop=false;isStanding=true">Standings</a></li>
 	</ul>	
 	<div ng-show="isRace">
-		<table>
+		<table class="table table-striped">
 			<tr>
 				<th>Pos</th>
 				<th>Points</th>
@@ -46,7 +46,7 @@
 	</div>
 	
 	<div ng-show="isQualifying">
-		<table>
+		<table class="table table-striped">
 			<tr>
 				<th>Pos</th>
 				<th>Driver</th>
@@ -67,7 +67,7 @@
 	</div>
 	
 	<div ng-show="isPitstop">
-		<table>
+		<table class="table table-striped">
 			<tr>
 				<th>Driver</th>
 				<th>Lap</th>
@@ -93,7 +93,7 @@
 		</p>
 		
 		<div ng-show="standingDriver">
-			<table>
+			<table class="table table-striped">
 				<tr>
 					<th>Pos</th>
 					<th>Driver</th>
@@ -112,7 +112,7 @@
 		</div>
 		
 		<div ng-show="!standingDriver">
-			<table>
+			<table class="table table-striped">
 				<tr>
 					<th>Pos</th>
 					<th>Constructor</th>

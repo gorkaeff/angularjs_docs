@@ -98,6 +98,7 @@ angular.module('f1App.controllers', [])
 	})
 	//----------------------------------------------------------------------------------------
 	.controller('ConstructorCtrl', function ($scope, ConstructorService) {
+		$scope.isLoadingData = true;
 		
 		ConstructorService.getConstructorList(30,0).success(function (response){
 			$scope.constructorLimit1 = response.MRData.ConstructorTable.Constructors;
@@ -125,6 +126,7 @@ angular.module('f1App.controllers', [])
 		
 		ConstructorService.getConstructorList(30,180).success(function (response){
 			$scope.constructorLimit7 = response.MRData.ConstructorTable.Constructors;
+			$scope.isLoadingData = false;
 		});
 		
 	});
