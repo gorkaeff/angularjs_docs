@@ -1,8 +1,7 @@
 <p>Select a year to show the driverList</p>
-<select ng-model="year" ng-options="y.name for y in years">
+<select class="form-control" ng-model="year" ng-change="showDrivers(year);" ng-options="y.name for y in years">
 	<option value="">-- choose year --</option>
 </select>
-<button ng-click="showDrivers(year);">Show Drivers</button>
 <hr />
 <div class="loading" ng-show="isLoadingData">
 	<p>Loading data...</p>
