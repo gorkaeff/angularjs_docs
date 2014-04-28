@@ -44,6 +44,20 @@ angular.module('f1App.services', [])
 			url: ConfigService.getUrlApp() + "/" + yearRace + '/' + idRace + '/pitstops.json'
 		});
 	};
+	
+	raceAPI.getDriverStandings = function (idRace, yearRace) {
+		return $http({
+			method: 'GET',
+			url: ConfigService.getUrlApp() + "/" + yearRace + '/' + idRace + '/driverStandings.json'
+		});
+	};
+	
+	raceAPI.getConstructorStandings = function (idRace, yearRace) {
+		return $http({
+			method: 'GET',
+			url: ConfigService.getUrlApp() + "/" + yearRace + '/' + idRace + '/constructorStandings.json'
+		});
+	};
 
 	return raceAPI;
 })
@@ -59,5 +73,18 @@ angular.module('f1App.services', [])
 	};
 	
 	return driverAPI;
+})
+
+.factory('ConstructorService', function ($http, ConfigService) {
+	var constructorAPI = {};
+
+	constructorAPI.getConstructorList = function (limit, offset) {
+		return $http({
+			method: 'GET',
+			url: ConfigService.getUrlApp() + "/constructors.json?limit=" + limit + "&offset=" + offset
+		});
+	};
+	
+	return constructorAPI;
 });
 

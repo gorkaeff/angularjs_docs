@@ -21,7 +21,6 @@ angular.module('f1App.controllers', [])
 		}
 		
 		$scope.showRace = function (year) {
-			$scope.evaluatedYear = year;
 			$scope.isLoadingData = true;
 			RaceService.getRaceList(year).success(function (response) {
 				$scope.raceList = response.MRData.RaceTable.Races;
@@ -32,11 +31,13 @@ angular.module('f1App.controllers', [])
 		$scope.showRace({name: actualYearAPI});
 	})
 	//----------------------------------------------------------------------------------------
-	.controller('RaceDetailCtrl', function ($scope, $routeParams, RaceService) {
+	.controller('RaceDetailCtrl', function ($scope, $routeParams, RaceService, $log) {
 		$scope.isRaceExists = false;
 		$scope.isRace = true;
 		$scope.isQualifying = false;
 		$scope.isPitstop = false;
+		$scope.isStanding = false;
+		$scope.standingDriver= true;
 		$scope.numRace = $routeParams.id;
 		$scope.numYear = $routeParams.year;
 		
@@ -55,10 +56,15 @@ angular.module('f1App.controllers', [])
 		RaceService.getPitsStop($scope.numRace, $scope.numYear).success(function (response){
 			$scope.pitStops = response.MRData.RaceTable.Races[0];
 		});
-	})
-	//----------------------------------------------------------------------------------------
-	.controller('StandingCtrl', function ($scope) {
+		
+		RaceService.getDriverStandings($scope.numRace, $scope.numYear).success(function (response){
+			$scope.driverStanding = response.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+			$log.log($scope.driverStanding);
+		});
 
+		RaceService.getConstructorStandings($scope.numRace, $scope.numYear).success(function (response){
+			$scope.constructorStanding = response.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
+		});
 	})
 	//----------------------------------------------------------------------------------------
 	.controller('DriverCtrl', function ($scope, DriverService) {
@@ -75,7 +81,6 @@ angular.module('f1App.controllers', [])
 		}
 		
 		$scope.showDrivers = function (year) {
-			$scope.evaluatedYear = year;
 			$scope.isLoadingData = true;
 			DriverService.getDriverList(year).success(function (response) {
 				$scope.driverList = response.MRData.DriverTable.Drivers;
@@ -90,6 +95,34 @@ angular.module('f1App.controllers', [])
 
 	})
 	//----------------------------------------------------------------------------------------
-	.controller('ConstructorCtrl', function ($scope) {
-
+	.controller('ConstructorCtrl', function ($scope, ConstructorService) {
+		
+		ConstructorService.getConstructorList(30,0).success(function (response){
+			$scope.constructorLimit1 = response.MRData.ConstructorTable.Constructors;
+		});
+		
+		ConstructorService.getConstructorList(30,30).success(function (response){
+			$scope.constructorLimit2 = response.MRData.ConstructorTable.Constructors;
+		});
+		
+		ConstructorService.getConstructorList(30,60).success(function (response){
+			$scope.constructorLimit3 = response.MRData.ConstructorTable.Constructors;
+		});
+		
+		ConstructorService.getConstructorList(30,90).success(function (response){
+			$scope.constructorLimit4 = response.MRData.ConstructorTable.Constructors;
+		});
+		
+		ConstructorService.getConstructorList(30,120).success(function (response){
+			$scope.constructorLimit5 = response.MRData.ConstructorTable.Constructors;
+		});
+		
+		ConstructorService.getConstructorList(30,150).success(function (response){
+			$scope.constructorLimit6 = response.MRData.ConstructorTable.Constructors;
+		});
+		
+		ConstructorService.getConstructorList(30,180).success(function (response){
+			$scope.constructorLimit7 = response.MRData.ConstructorTable.Constructors;
+		});
+		
 	});

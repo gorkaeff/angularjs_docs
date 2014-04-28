@@ -16,8 +16,6 @@ config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/races', {templateUrl: 'modules/ui.race/raceList.html', controller: 'RaceCtrl'});
 	$routeProvider.when('/race/:id/:year', {templateUrl: 'modules/ui.race/raceDetail.html', controller: 'RaceDetailCtrl'});
 	
-	$routeProvider.when('/standings', {templateUrl: 'modules/ui.standings/standingsList.html', controller: 'StandingCtrl'});
-	
 	$routeProvider.when('/drivers', {templateUrl: 'modules/ui.driver/driverList.html', controller: 'DriverCtrl'});
 	$routeProvider.when('/driver/:idDriver', {templateUrl: 'modules/ui.driver/driverDetail.html', controller: 'DriverDetailCtrl'});
 	

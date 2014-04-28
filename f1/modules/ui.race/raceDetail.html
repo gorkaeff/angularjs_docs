@@ -5,9 +5,10 @@
 	<p>Hour: {{raceDetail.time.substring(0,5)}}</p>
 </div>
 <div ng-show="isRaceExists">
-	<a href="" ng-click="isRace=true;isQualifying=false;isPitstop=false">Race</a> &
-	<a href="" ng-click="isRace=false;isQualifying=false;isPitstop=true">PitStops</a> &
-	<a href="" ng-click="isRace=false;isQualifying=true;isPitstop=false">Qualifying</a>
+	<a href="" ng-click="isRace=true;isQualifying=false;isPitstop=false;isStanding=false">Race</a> &
+	<a href="" ng-click="isRace=false;isQualifying=false;isPitstop=true;isStanding=false">PitStops</a> &
+	<a href="" ng-click="isRace=false;isQualifying=true;isPitstop=false;isStanding=false">Qualifying</a> &
+	<a href="" ng-click="isRace=false;isQualifying=false;isPitstop=false;isStanding=true">Standings</a>
 	
 	<div ng-show="isRace">
 		<table>
@@ -63,8 +64,8 @@
 		<table>
 			<tr>
 				<th>Driver</th>
-				<th>Stop</th>
 				<th>Lap</th>
+				<th>Stop</th>
 				<th>Time</th>
 				<th>Duration</th>
 			</tr>
@@ -78,7 +79,52 @@
 		</table>
 	</div>
 	
-	
+	<div ng-show="isStanding">
+		<hr />
+		<p>Clasification: 
+			<a href="" ng-click="standingDriver=true">Drivers</a> & 
+			<a href="" ng-click="standingDriver=false">Constructors</a>
+		</p>
+		
+		<div ng-show="standingDriver">
+			<table>
+				<tr>
+					<th>Pos</th>
+					<th>Driver</th>
+					<th>Constructor</th>
+					<th>Points</th>
+					<th>Wins</th>
+				</tr>
+				<tr ng-repeat="dri in driverStanding">
+					<td>{{dri.position}}</td>
+					<td>{{dri.Driver.givenName}} {{dri.Driver.familyName}}</td>
+					<td>{{dri.Constructors[0].name}}</td>
+					<td>{{dri.points}}</td>
+					<td>{{dri.wins}}</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div ng-show="!standingDriver">
+			<table>
+				<tr>
+					<th>Pos</th>
+					<th>Constructor</th>
+					<th>Nationality</th>
+					<th>Points</th>
+					<th>Wins</th>
+				</tr>
+				<tr ng-repeat="cs in constructorStanding">
+					<td>{{cs.position}}</td>
+					<td>{{cs.Constructor.name}}</td>
+					<td>{{cs.Constructor.nationality}}</td>
+					<td>{{cs.points}}</td>
+					<td>{{cs.wins}}</td>
+				</tr>
+			</table>
+		</div>
+		
+	</div>
 </div>
 
 <div ng-show="!isRaceExists">
