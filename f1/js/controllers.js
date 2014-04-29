@@ -42,12 +42,26 @@ angular.module('f1App.controllers', [])
 		$scope.numRace = $routeParams.id;
 		$scope.numYear = $routeParams.year;
 		
+		/*
+		$scope.map = {
+			center: {
+				latitude: -37.8497,
+				longitude: 144.968
+			},
+			zoom: 9
+		};
+		*/
+		
 		RaceService.getRaceDetail($scope.numRace, $scope.numYear).success(function (response) {
 			$scope.totalRacesYear = response.MRData.total;
 			$scope.raceDetail = response.MRData.RaceTable.Races[0];
 			if ($scope.raceDetail.season != ""){
 				$scope.isRaceExists = true;
 			}
+			//$scope.map.center.latitude = $scope.raceDetail.Circuit.Location.lat;
+			//$scope.map.center.longitue = $scope.raceDetail.Circuit.Location.long;
+			$scope.locality = $scope.raceDetail.Circuit.Location.locality;
+			$scope.country = $scope.raceDetail.Circuit.Location.country;
 		});
 		
 		RaceService.getQualifyingDetail($scope.numRace, $scope.numYear).success(function (response){
@@ -60,7 +74,6 @@ angular.module('f1App.controllers', [])
 		
 		RaceService.getDriverStandings($scope.numRace, $scope.numYear).success(function (response){
 			$scope.driverStanding = response.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-			$log.log($scope.driverStanding);
 		});
 
 		RaceService.getConstructorStandings($scope.numRace, $scope.numYear).success(function (response){

@@ -4,6 +4,7 @@
 
 angular.module('f1App', [
 	'ngRoute',
+	//'google-maps',
 	'f1App.filters',
 	'f1App.services',
 	'f1App.directives',

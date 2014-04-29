@@ -3,10 +3,15 @@
     	<h3 class="panel-title">Race Detail</h3>
   	</div>
   	<div class="panel-body">
-		<p>Race Name: {{raceDetail.raceName}}, {{raceDetail.Circuit.circuitName}}</p>
-		<p>Race: {{numRace}} of {{totalRacesYear}}</p>
-		<p>Date: {{raceDetail.date | date: 'dd/MM/yyyy'}}</p>
-		<p>Hour: {{raceDetail.time.substring(0,5)}}</p>
+		<h3>{{raceDetail.raceName}}, {{raceDetail.Circuit.circuitName}} ({{locality}}, {{country}})</h3>
+		<!--
+		<google-map center="map.center" zoom="map.zoom"></google-map>
+		-->
+		<h4>
+			Race: <span class="label label-default">{{numRace}} of {{totalRacesYear}}</span> 
+			Date: <span class="label label-default">{{raceDetail.date | date: 'dd/MM/yyyy'}}</span>
+			Hour: <span class="label label-default">{{raceDetail.time.substring(0,5)}}</span>	
+		</h4>
   	</div>
 </div>
 <div ng-show="isRaceExists">
